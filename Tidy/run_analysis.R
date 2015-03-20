@@ -53,17 +53,12 @@ colnames(combinedSubjects) <- c("Subject_Index")
 # Add the row indexes/labels (Assignment Part 4)
 tidyData <- cbind(combinedSubjects,combinedActivities,allData)
 
-# do step 5
-library(plyr)
-ddply(tidyData[,-3],.(Subject_Index,Activity_Index),colMeans)
+# do the grouping and averaging by Subject_Index and Activity_Index (Assignment Part 5)
+library(plyr) # load required package - assumes already installed
+tidyDataMeans <- ddply(tidyData[,-3],.(Subject_Index,Activity_Index),colMeans)
 
 
 # write the output in desired format
 write.table(tidyDataMeans,"tidyDataMeans.txt",row.name=FALSE)
 
 
-
-
-
-
-# 
